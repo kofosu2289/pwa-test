@@ -11,9 +11,7 @@ db.enablePersistence().catch(err => {
 
 // real-time event listener
 db.collection('recipes').onSnapshot((snapshot) => {
-  // console.log(snapshot.docChanges());
   snapshot.docChanges().forEach(change => {
-    // console.log(change, change.doc.data(), change.doc.id);
     if (change.type === 'added') {
       renderRecipe(change.doc.data(), change.doc.id);
     }
@@ -41,7 +39,6 @@ form.addEventListener('submit', event => {
 // delete recipe
 const recipeContainer = document.querySelector('.recipes');
 recipeContainer.addEventListener('click', event => {
-  // console.log(event);
   if (event.target.tagName === 'I') {
     const id = event.target.getAttribute('data-id');
     db.collection('recipes').doc(id).delete();

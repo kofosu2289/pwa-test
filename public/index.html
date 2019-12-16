@@ -79,14 +79,15 @@
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
 
 <script>
+  import * as secret from './secrets.js';
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyBiNCSspr-H3-ltHvCOWER6CpChYkzCqiw",
+    apiKey: secret.apiKey,
     authDomain: "recipeze-pwa.firebaseapp.com",
     databaseURL: "https://recipeze-pwa.firebaseio.com",
     projectId: "recipeze-pwa",
     storageBucket: "recipeze-pwa.appspot.com",
-    messagingSenderId: "62512796439",
+    messagingSenderId: secret.messagingSenderId,
     appId: "1:62512796439:web:2c3cce3e3f4a20a349dd52",
     measurementId: "G-Q2843W6FCR"
   };
