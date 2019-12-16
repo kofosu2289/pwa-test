@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static';
+const staticCacheName = 'site-static-v2';
 const assets = [
   '/',
   '/index.html',
@@ -12,7 +12,7 @@ const assets = [
   'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
 ];
 
-// install service worke
+// install service worker
 self.addEventListener('install', event => {
   // console.log('service worker has been installed');
   event.waitUntil(
@@ -26,6 +26,15 @@ self.addEventListener('install', event => {
 // activate event
 self.addEventListener('activate', event => {
   // console.log('service worker has been activated');
+  event.waitUntil(
+    caches.keys().then(keys => {
+      // console.log(keys);
+      Promise.all(keys
+        .filter(key => key !== staticCacheName)
+        .map(key => caches.delete(key))
+      )
+    })
+  );
 });
 
 // fetch even
