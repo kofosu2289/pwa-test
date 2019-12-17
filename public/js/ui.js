@@ -1,12 +1,16 @@
-const recipes = document.querySelector('.recipes');
+const recipes = document.querySelector(".recipes");
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   // nav menu
-  const menus = document.querySelectorAll('.side-menu');
-  M.Sidenav.init(menus, { edge: 'right' });
+  const menus = document.querySelectorAll(".side-menu");
+  M.Sidenav.init(menus, {
+    edge: "right"
+  });
   // add recipe form
-  const forms = document.querySelectorAll('.side-form');
-  M.Sidenav.init(forms, { edge: 'left' });
+  const forms = document.querySelectorAll(".side-form");
+  M.Sidenav.init(forms, {
+    edge: "left"
+  });
 });
 
 // render recipe data
@@ -23,12 +27,12 @@ const renderRecipe = (data, id) => {
         </div>
       </div>
     `;
-  
+
   recipes.innerHTML += html;
-}
+};
 
 // remove recipe from DOM
-const removeRecipe = id => {
+const removeRecipe = (id) => {
   const recipe = document.querySelector(`.recipe[data-id=${id}]`);
   recipe.remove();
-}
+};
